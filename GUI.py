@@ -3,6 +3,7 @@ from tkinter.font import Font
 import tkinter.ttk as ttk
 from ttkthemes import ThemedTk
 import time, ctypes
+from tkinter.messagebox import askokcancel
 try:
     from main import *
     from table import gettable
@@ -564,15 +565,22 @@ distribution_of_cases = distribution_of_cases(root)
 distribution_of_cases.place(x=0, y=0, width=1200, height=700)
 '''
 
-root = ThemedTk(theme='breeze')
-root.geometry('1920x1080')
-root.config(bg='#191919')
-root.title('Covid-19 Data Analysis')
-root.state('zoomed')
+def ask_quit():
+    if askokcancel("Quit", "You want to quit now?"):
+        quit()
 
-app = main()
-app.widget()
+if __name__ == '__main__':
 
-root.mainloop()
+    root = ThemedTk(theme='breeze')
+    root.geometry('1920x1080')
+    root.config(bg='#191919')
+    root.title('Covid-19 Data Analysis')
+    root.protocol("WM_DELETE_WINDOW", ask_quit)
+    root.state('zoomed')
 
-quit()
+    app = main()
+    app.widget()
+
+    root.mainloop()
+
+    quit()

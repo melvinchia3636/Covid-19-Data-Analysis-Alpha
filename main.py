@@ -94,7 +94,7 @@ def total_cases_chart(root):
     total_cases_date = [i.replace('\"', '') for i in list(set(re.findall(r'categories:.*', main[23])))[0].replace('categories: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     total_cases = [int(i) for i in data[1][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     fig, ax = plt.subplots()
-    plt.xticks(np.arange(0, len(total_cases_date), 5.0))
+    plt.xticks(np.arange(0, len(total_cases_date), 10.0))
     def format_func(value, tick_number):
         return ShortScale(int(value))
     ax.yaxis.set_major_formatter(plt.FuncFormatter(format_func))
@@ -112,7 +112,7 @@ def total_serious_and_critical_cases(root):
     total_serious_and_critical_cases = [i for i in data[7][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     total_serious_and_critical_cases = [0 if total_serious_and_critical_cases[i] == 'null' else int(total_serious_and_critical_cases[i]) for i in range(len(total_serious_and_critical_cases))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(total_serious_and_critical_cases_date), 5)
+    x_ticks = np.arange(0, len(total_serious_and_critical_cases_date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
@@ -131,7 +131,7 @@ def daily_cases_chart(root):
     daily_cases = [i for i in data[2][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     daily_cases = [0 if daily_cases[i] == 'null' else int(daily_cases[i]) for i in range(len(daily_cases))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(daily_cases_date), 6)
+    x_ticks = np.arange(0, len(daily_cases_date), 10)
     plt.xticks(x_ticks)
     fig.set_size_inches(13, 6)
     plot_bar(daily_cases_date, daily_cases, 'white', 'Daily Cases', 'Daily Cases', ax, fig)
@@ -145,7 +145,7 @@ def active_cases_chart(root):
     active_cases_date = [i.replace('\"', '') for i in list(set(re.findall(r'categories:.*', main[25])))[0].replace('categories: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     active_cases = [int(i) for i in data[3][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(active_cases_date), 6)
+    x_ticks = np.arange(0, len(active_cases_date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
@@ -163,7 +163,7 @@ def total_cured_chart(root):
     total_cured_date = [i.replace('\"', '') for i in list(set(re.findall(r'categories:.*', main[26])))[0].replace('categories: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     total_cured = [int(i) for i in data[4][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(total_cured_date), 5)
+    x_ticks = np.arange(0, len(total_cured_date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
@@ -182,7 +182,7 @@ def daily_cured_chart(root):
     daily_cured = [i for i in data[5][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     daily_cured = [0 if daily_cured[i] == 'null' else int(daily_cured[i]) for i in range(len(daily_cured))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(daily_cured_date), 5)
+    x_ticks = np.arange(0, len(daily_cured_date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
@@ -202,7 +202,7 @@ def infected_vs_recovered_chart(root):
     daily_cured = [i for i in data[5][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     daily_cured = [0 if daily_cured[i] == 'null' else int(daily_cured[i]) for i in range(len(daily_cured))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(date), 5)
+    x_ticks = np.arange(0, len(date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
@@ -224,7 +224,7 @@ def outcome_of_total_close_cases(root):
     recovery_rate = [i for i in data[9][1].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     recovery_rate = [0 if recovery_rate[i] == 'null' else float(recovery_rate[i]) for i in range(len(recovery_rate))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(date), 5)
+    x_ticks = np.arange(0, len(date), 10)
     plt.xticks(x_ticks)
     fig.set_size_inches(13, 6)
     line_info1, line_info2, datax = plot_double_line(date, death_rate, date, recovery_rate, '#ffbaba', '#baffba', 'Death Rate', 'Recovery Rate', ax, fig, 'Outcome of total closed cases (recovery rate vs death rate)')
@@ -241,7 +241,7 @@ def total_death_chart(root):
     total_death_date = [i.replace('\"', '') for i in list(set(re.findall(r'categories:.*', main[33])))[0].replace('categories: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     total_death = [int(i) for i in data[10][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     fig, ax = plt.subplots()
-    plt.xticks(np.arange(0, len(total_death_date), 5.0))
+    plt.xticks(np.arange(0, len(total_death_date), 10.0))
     def format_func(value, tick_number):
         return ShortScale(int(value))
     ax.yaxis.set_major_formatter(plt.FuncFormatter(format_func))
@@ -259,7 +259,7 @@ def daily_death_chart(root):
     daily_death = [i for i in data[11][0].replace('data: [', '').replace(']', '').replace('}', '').replace(' ', '').split(',') if i != '']
     daily_death = [0 if daily_death[i] == 'null' else int(daily_death[i]) for i in range(len(daily_death))]
     fig, ax = plt.subplots()
-    x_ticks = np.arange(0, len(daily_death_date), 6)
+    x_ticks = np.arange(0, len(daily_death_date), 10)
     plt.xticks(x_ticks)
     def format_func(value, tick_number):
         return ShortScale(int(value))
