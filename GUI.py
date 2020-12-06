@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter.font import Font
 import tkinter.ttk as ttk
-from ttkthemes import ThemedTk
+from custom_ttkthemes import ThemedTk
 import time, ctypes
 from tkinter.messagebox import askokcancel
 try:
